@@ -60,21 +60,21 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 nsqlookupd selector labels
 */}}
 {{- define "nsq.nsqlookupd.selectorLabels" -}}
-app.kubernetes.io/component: nsqlookupd
+app.kubernetes.io/component: {{ default "nsqlookupd" .Values.nsqlookupd.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end }}
 
 {{/*
 nsqadmin selector labels
 */}}
 {{- define "nsq.nsqadmin.selectorLabels" -}}
-app.kubernetes.io/component: nsqadmin
+app.kubernetes.io/component: {{ default "nsqadmin" .Values.nsqadmin.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end }}
 
 {{/*
 nsqd selector labels
 */}}
 {{- define "nsq.nsqd.selectorLabels" -}}
-app.kubernetes.io/component: nsqd
+app.kubernetes.io/component: {{ default "nsqd" .Values.nsqd.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end }}
 
 {{/*
